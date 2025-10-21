@@ -157,11 +157,12 @@ sacctmgr show assoc user=root format=account,user,fairshare
 **Expected Output:**
 
 ```
-Account    User       Share
+   Account       User     Share
 ---------- ---------- ---------
-lci        rocky      1
-io         rocky      1
-ml         rocky      1
+     admin      rocky         1
+       lci      rocky         1
+        io      rocky         1
+        ml      rocky         1
 
 Account    User       Share
 ---------- ---------- ---------
