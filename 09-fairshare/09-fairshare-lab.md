@@ -768,8 +768,8 @@ cat /tmp/hierarchy_best_practices.txt
 scontrol show config | grep -E "PriorityType|PriorityFlags"
 
 # Expected:
-# PriorityType=priority/multifactor
-# PriorityFlags=FAIR_TREE DEPTH_OBLIVIOUS
+# PriorityFlags           = ACCRUE_ALWAYS,SMALL_RELATIVE_TO_TIME
+# PriorityType            = priority/multifactor
 ```
 
 ### 6.2 Generate Summary Report
