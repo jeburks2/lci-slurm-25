@@ -306,7 +306,7 @@ The certmgr plugin requires several scripts to handle certificate operations. Sl
 The slurmctld_validate_node_token script is responsible for validating the authenticity of a compute node by checking its presented token against the token stored in Vault's KV secrets engine. The script is passed the node name and token as arguments $1 and $2 and compares the presented token to the known token stored in Vault. It only needs to be present on the head node.
 
 ```bash
-cat > ${OUTDIR}/slurmctld_validate_node_token.sh << EOF
+cat > /etc/slurm/certmgr/slurmctld_validate_node_token.sh << EOF
 #!/bin/bash
 set -euo pipefail
 NODE_NAME="\${1:-}"
@@ -695,6 +695,13 @@ srun --nodes=1 --ntasks=1 hostname
 ## Troubleshooting Guide
 
 ### Common Issues
+
+***Re-read the Root CA from Vault:***
+
+```bash
+vault read -field=certificate pki/cert/ca > /etc/slurm/certmgr/slurm_ca.pem
+chmod 0644 /etc/slurm/certmgr/slurm_ca.pem
+```
 
 **Vault Service Won't Start:**
 
