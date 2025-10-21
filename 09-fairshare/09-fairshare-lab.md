@@ -17,7 +17,7 @@
 
 ## PART 1: SETUP & BASELINE (10 min)
 
-### 1.1 Verify Slurm Version
+### 1.1 Verify Slurm Version and Partition Default
 
 ```bash
 # Check version (need 22.05+ for Fairtree)
@@ -33,7 +33,8 @@ sinfo --version
 ```
 slurm 25.05.3
 ```
-### 1.1a Verify Slurm Partition General is set to Default
+
+Verify Slurm Partition General is set to Default
 
 ```bash
 # If the general partition is set to default.
