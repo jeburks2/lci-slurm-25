@@ -31,7 +31,7 @@ sinfo --version
 **Expected Output:**
 
 ```
-slurm 22.05.3
+slurm 25.05.3
 ```
 
 
