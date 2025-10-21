@@ -418,7 +418,7 @@ We can do this by editing /etc/default/slurmd and adding the following line:
 
 ```bash
 for node in $(scontrol show nodes --json | jq -r '.nodes[].hostname'); do
-   ssh $node 'eval "$(grep -m1 "^SLURMD_OPTIONS=" /etc/default/slurmd)"; printf "%s\n" "SLURMD_OPTIONS=\"${SLURMD_OPTIONS} --ca-cert-file=/etc/slurm/certmgr/slurm_ca.pem\"" > /etc/default/slurmd'
+   ssh $node 'echo SLURMD_OPTIONS=--ca-cert-file=/etc/slurm/certmgr/slurm_ca.pem >> /etc/default/slurmd'
 done
 ```
 
