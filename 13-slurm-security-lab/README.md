@@ -449,7 +449,7 @@ Verify that dynamic certificates are being created on the compute nodes by check
 
 ```bash
 for node in $(scontrol show nodes --json | jq -r '.nodes[].hostname'); do
-    ssh $node "cat /var/spool/slurmd/certmgr_state"
+    ssh $node "cat /var/spool/slurmd.spool/certmgr_state"
 done
 ```
 
