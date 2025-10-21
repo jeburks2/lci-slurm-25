@@ -519,7 +519,7 @@ PriorityDecayHalfLife=0-0:01:00
 
 ```bash
 # Submit a job that uses significant resources
-sbatch -A ml -n 4 -t 5 --job-name=heavy_ml \
+sbatch -A ml -n 2 -t 3 --job-name=heavy_ml \
 --wrap="srun bash -c 'for i in {1..300}; do echo \$i; sleep 1; done'"
 
 # Wait for it to finish
@@ -610,7 +610,7 @@ sudo scontrol reconfigure
 
 ```bash
 # Check account usage over time
-sacctmgr show account tree format=account,fairshare
+sacctmgr show association  tree format=account,fairshare
 
 # Get usage statistics
 sacctmgr show stats format=account,user,cpu_usage,memory_usage
@@ -640,7 +640,7 @@ sacctmgr modify account cv set fairshare=50 # 50% of ml
 sacctmgr modify account nlp set fairshare=50 # 50% of ml
 
 # Verify
-sacctmgr show account tree
+sacctmgr show association tree
 
 # Assign users
 sacctmgr add user rocky account=cv
