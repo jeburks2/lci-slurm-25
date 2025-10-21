@@ -33,7 +33,36 @@ sinfo --version
 ```
 slurm 25.05.3
 ```
+### 1.1a Verify Slurm Partition General is set to Default
 
+```bash
+# If the general partition is set to default.
+scontrol show part
+# Expected output
+# Check the output for 
+Default=YES
+
+# if it shows Default=NO edit /etc/slurm/slurm.conf find General=No and change to Default=Yes
+```
+
+
+**Expected Output:**
+
+```shell
+PartitionName=general
+    AllowGroups=ALL AllowAccounts=ALL AllowQos=normal
+    AllocNodes=ALL Default=YES QoS=normal
+    DefaultTime=04:00:00 DisableRootJobs=NO ExclusiveUser=NO ExclusiveTopo=NO GraceTime=0 Hidden=NO
+    MaxNodes=UNLIMITED MaxTime=1-00:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
+    Nodes=lci-compute-40-[1-2]
+    PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
+    OverTimeLimit=NONE PreemptMode=CANCEL
+    State=UP TotalCPUs=4 TotalNodes=2 SelectTypeParameters=NONE
+    JobDefaults=DefMemPerGPU=24576
+    DefMemPerCPU=2048 MaxMemPerNode=UNLIMITED
+    TRES=cpu=4, mem=15000M, node=2, billing=7
+    TRESBillingWeights=CPU=1.0,Mem=.25G,gres/gpu=3.0
+```
 
 **Troubleshooting:**
 
