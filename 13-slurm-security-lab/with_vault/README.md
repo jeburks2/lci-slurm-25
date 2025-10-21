@@ -496,7 +496,7 @@ This step confirms that your Slurm cluster is successfully using TLS encryption 
 ### Submit a Test Job
 
 ```bash
-srun --nodes=1 --ntasks=1 hostname
+srun --nodes=1 --ntasks=1 -p general --chdir=/root hostname
 ```
 
 This should complete successfully, demonstrating that TLS communication is working between the head node and compute nodes.
@@ -689,7 +689,7 @@ sinfo
 scontrol show nodes
 
 # Submit a test job
-srun --nodes=1 --ntasks=1 hostname
+srun --nodes=1 --ntasks=1 -p general --chdir=/root hostname
 ```
 
 ## Troubleshooting Guide
