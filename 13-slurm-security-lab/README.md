@@ -448,7 +448,9 @@ This should complete successfully, demonstrating that TLS communication is worki
 Verify that dynamic certificates are being created on the compute nodes by checking the certmgr state file:
 
 ```bash
-cat /var/spool/slurmd/certmgr_state
+for node in $(scontrol show nodes --json | jq -r '.nodes[].hostname'); do
+    ssh $node "cat /var/spool/slurmd/certmgr_state"
+done
 ```
 
 You should see certificate files being created as needed for client communications.
