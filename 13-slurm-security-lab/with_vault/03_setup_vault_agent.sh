@@ -86,13 +86,13 @@ template {
   source      = "${TEMPLATE_DIR}/restd_cert_key.tmpl"
   destination = "${OUTDIR}/slurmrestd.key"
   perms       = "0400"
-  command     = "bash -c 'chown slurmrestd:slurmrestd ${OUTDIR}/slurmrestd.key || true; systemctl reload slurmrestd || true'"
+  command     = "bash -c 'chown rocky:rocky ${OUTDIR}/slurmrestd.key || true; systemctl reload slurmrestd || true'"
 }
 template {
   source      = "${TEMPLATE_DIR}/restd_cert.tmpl"
   destination = "${OUTDIR}/slurmrestd.pem"
   perms       = "0640"
-  command     = "bash -c 'chown slurmrestd:slurmrestd ${OUTDIR}/slurmrestd.pem || true; systemctl reload slurmrestd || true'"
+  command     = "bash -c 'chown rocky:rocky ${OUTDIR}/slurmrestd.pem || true; systemctl reload slurmrestd || true'"
 }
 HCL
 

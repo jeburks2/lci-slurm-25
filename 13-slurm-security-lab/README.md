@@ -161,7 +161,7 @@ Generate the CA private key
 ```bash
 mkdir -p /etc/slurm/certmgr
 chmod 750 /etc/slurm/certmgr
-chown slurm:slurmrestd /etc/slurm/certmgr/
+chown slurm:rocky /etc/slurm/certmgr/
 openssl ecparam -name prime256v1 -genkey -noout -out /etc/slurm/certmgr/slurm_ca.key
 chmod 400 /etc/slurm/certmgr/slurm_ca.key
 chown slurm:slurm /etc/slurm/certmgr/slurm_ca.key
@@ -206,8 +206,8 @@ for service in slurmctld slurmdbd slurmrestd; do
     chmod 0400 /etc/slurm/certmgr/${service}.key
     chmod 0400 /etc/slurm/certmgr/${service}.pem
     if [[ "${service}" == "slurmrestd" ]]; then
-        chown slurmrestd:slurmrestd /etc/slurm/certmgr/${service}.key
-        chown slurmrestd:slurmrestd /etc/slurm/certmgr/${service}.pem
+        chown rocky:rocky /etc/slurm/certmgr/${service}.key
+        chown rocky:rocky /etc/slurm/certmgr/${service}.pem
     else
         chown slurm:slurm /etc/slurm/certmgr/${service}.key
         chown slurm:slurm /etc/slurm/certmgr/${service}.pem

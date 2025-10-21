@@ -193,7 +193,7 @@ Download this git repository to your Slurm head node and run the provided vault 
 ```bash
 git clone https://github.com/jeburks2/lci-slurm-25/
 cd lci-slurm-25/13-slurm-security-lab/with_vault
-./01_setup_vault.sh
+bash ./01_setup_vault.sh
 ```
 
 Vault is a complex system with many configuration options. The provided script sets up a basic Vault server with a file storage backend, initializes and unseals it, and configures the PKI and KV secrets engines for this lab. It also creates the necessary policies, roles, and tokens for Slurm integration, creating a role that allows Slurm to request certificates and store node tokens.
@@ -204,7 +204,7 @@ After running this script, you can verify Vault is running and the token authent
    ```bash
    source 00_config.sh
    vault status
-   systemctl status vault
+   systemctl status vault.service --no-pager
    vault token lookup
    ```
 
@@ -214,6 +214,9 @@ We need to generate a root CA certificate using vault, it will be used to sign a
 
    ```bash
    source 00_config.sh
+   mkdir -p /etc/slurm/certmgr
+   chown slurm:rocky /etc/slurm/certmgr
+   chmod 0750 /etc/slurm/certmgr
    vault write -field=certificate pki/root/generate/internal common_name="slurm-internal-ca" issuer_name="LCI-Advanced-2025" ttl="87600h" > /etc/slurm/certmgr/slurm_ca.pem
    chmod 0644 /etc/slurm/certmgr/slurm_ca.pem
    ```
@@ -249,7 +252,7 @@ Vault Agent is a lightweight process that automates authentication and secret re
 Run the provided setup script to install and configure Vault Agent on the head node:
 
 ```bash
-./03_setup_vault_agent.sh
+bash ./03_setup_vault_agent.sh
 ```
 
 This script creates the necessary configuration files, systemd service units, templates for Vault Agent to manage Slurm certificates, and a token file for Vault authentication. It also starts the Vault Agent service and verifies the certificates are generated. Vault Agent also creates a sink file for Slurmctld to use to sign CSRs and validate node tokens.
