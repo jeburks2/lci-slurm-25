@@ -115,22 +115,26 @@ sacctmgr modify account admin set fairshare=30 # 30% of root
 sacctmgr modify account lci set fairshare=70 # 70% of root
 
 # Verify
-sacctmgr list assoc format=account,fairshare
+sacctmgr list assoc tree format=account,fairshare
 ```
 
 
 **Expected Output:**
 
 ```
-Account    Share
----------- ---------
-root       1
-root       1
-admin      30
-lci        70
-lci        1
-io         60
-ml         40
+Account                  Share
+-------------------- ---------
+root                         1
+ root                        1
+ admin                      30
+  admin                      1
+  admin                      1
+ lci                        70
+  lci                        1
+  io                        60
+   io                        1
+  ml                        40
+   ml                        1
 ```
 
 ### 1.5 Assign Users to Accounts
@@ -188,11 +192,14 @@ scontrol show config | grep PriorityFlags
 **Expected Output:**
 
 ```
+# will show NO_FAIR_TREE, as enabling DEPTH_OBLIVIOUS disables FAIR_TREE
 PriorityFlags           = DEPTH_OBLIVIOUS,NO_FAIR_TREE
+
 ```
 
 ### 2.2 Create Test Workload Script
 
+** Copy this entire section, then paste & run in terminal:
 ```bash
 # Create /tmp/submit_jobs_classic.sh
 cat > /tmp/submit_jobs_classic.sh << 'EOF'
@@ -262,7 +269,7 @@ ml                   rocky       1         0.274483    2500        0.170264     
   
 
 ### 2.4 Measure Priority Evolution
-
+** Copy this entire section, then paste & run in terminal:
 ```bash
 # Record priority and fairshare factors over time
 cat > /tmp/measure_classic.sh << 'EOF'
@@ -413,7 +420,7 @@ ml rocky 1 1.000000 5839 0.408536 1.000000 0.600000 1.000000 cpu=4,mem=8192,ener
 **Note:** Initial fairshare factors are same (no usage yet); difference emerges as jobs run.
 
 ### 3.4 Measure Priority Evolution (Fairtree)
-
+** Copy this entire section, then paste & run in terminal:**
 ```bash
 # Reuse measure script (captures same data)
 cat > /tmp/measure_fairtree.sh << 'EOF'
@@ -445,7 +452,7 @@ sleep 300 && kill $BG_PID 2>/dev/null || true
   
 
 ### 3.5 Compare Classic vs. Fairtree
-
+** Copy this entire section, then paste & run in terminal:**
 ```bash
 # Side-by-side comparison
 echo "=== CLASSIC vs. FAIRTREE ==="
@@ -531,7 +538,7 @@ ml      0.2 # Low factor due to recent usage
 ```
 
 ### 4.3 Observe Fairshare Decay Over Time
-
+** Copy this entire section, then paste & run in terminal:
 ```bash
 # Monitor fairshare factor every 10 sec
 cat > /tmp/observe_decay.sh << 'EOF'
@@ -676,7 +683,7 @@ If cv over-uses, nlp gets higher priority (and vice versa).
 ```
 
 ### 5.4 Document Best Practices
-
+** Copy this entire section, then paste & run in terminal:
 ```bash
 # Create summary document
 cat > /tmp/hierarchy_best_practices.txt << 'EOF'
@@ -735,7 +742,7 @@ scontrol show config | grep -E "PriorityType|PriorityFlags"
 ```
 
 ### 6.2 Generate Summary Report
-
+** Copy this entire section, then paste & run in terminal:
 ```bash
 # Collect all data
 cat > /tmp/lab_summary.sh << 'EOF'
