@@ -194,10 +194,10 @@ sacctmgr show assoc user=root format=account,user,fairshare
         io      rocky         1
         ml      rocky         1
 
-Account    User       Share
+   Account       User     Share
 ---------- ---------- ---------
-root       root       1
-admin      root       1
+      root       root         1
+      admin      root         1
 ```
 
 
