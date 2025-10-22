@@ -229,9 +229,9 @@ Submit a few test jobs to see them reflected in the dashboard.
 ```bash
 sbatch -J tinyJob -p general -c 1 --mem=1G --time=00:02:00 --wrap="sleep 120"
 sbatch -J tinyJob -p general -c 2 --mem=1G --time=00:02:00 --wrap="sleep 120"
-sbatch -J tinyJob -p general -c 3 --mem=1G --time=00:02:00 --wrap="sleep 120"
+sbatch -J tinyJob -p general -c 2 --mem=1G --time=00:02:00 --wrap="sleep 120"
 sbatch -J smallJob -p general -c 2 --mem=4G --time=00:05:00 --wrap="sleep 300"
-sbatch -J bigJob -p general -c 4 --mem=7G --time=00:10:00 --wrap="sleep 600"
+sbatch -J bigJob -p general -c 2 --mem=7G --time=00:10:00 --wrap="sleep 600"
 ```
 
 Click on the nodes to see the detailed view of jobs running on each node.
