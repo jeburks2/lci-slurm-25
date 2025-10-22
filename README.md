@@ -1,4 +1,5 @@
-Linux Cluster Institute - Advanced 
-Slurm
+# Linux Cluster Institute - Advanced Slurm 2025
 
-Power Saving with Slurm - https://slurm.schedmd.com/SLUG23/DTU-SLUG23.pdf
+## Additional Resources
+
+[Power Saving with Slurm - SLUG23](https://slurm.schedmd.com/SLUG23/DTU-SLUG23.pdf)
