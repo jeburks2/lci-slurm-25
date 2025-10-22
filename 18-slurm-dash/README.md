@@ -146,6 +146,13 @@ Note:
 
 Do not expose your .env file or its contents in a public repository as it contains sensitive information like API keys and tokens.
 
+### Add the LCI Logo as your Cluster Logo
+
+```bash
+curl -L https://linuxclustersinstitute.org/wp-content/uploads/2021/10/cropped-MISC100421_LCI_Logo-2.png -o ./public/logo.png
+```
+
+
 ## Step 6: Build the Dashboard
 
 ### Dev Build (Unavailable in todays setup)
