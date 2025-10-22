@@ -156,10 +156,10 @@ Note: Running npm run dev starts a development server that automatically reloads
 
 ### Production Build
 
-We will be using pm2 to manage the application process in production. We need to install pm2 first, build the production version of the application, and then save the pm2 process list.
+We will be using pm2 to manage the application process in production. We need to install pm2 globally first, build the production version of the application, and then save the pm2 process list.
 
 ```bash
-npm install pm2
+sudo npm install -g pm2
 npm run build # This may take a few minutes
 
 # Start the application with
