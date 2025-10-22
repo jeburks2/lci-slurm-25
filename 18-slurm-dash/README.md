@@ -78,7 +78,7 @@ npx create-slurm-dashboard slurm-node-dashboard
 
 This command uses NPX to scaffold the HPC Dashboard project in a directory called slurm-node-dashboard.
 
-You will be prompted to select the version of the dashboard to install. Choose the latest stable version and follow the prompts to complete the installation.
+You will be prompted to select the version of the dashboard to install. Choose the `stable (main branch)` version and follow the prompts to complete the installation.
 
 !["Slurm Dashboard Setup Prompts"](./images/npx-install-slurm-dash.png)
 
