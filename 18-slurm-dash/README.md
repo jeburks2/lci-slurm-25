@@ -10,9 +10,9 @@ The HPC Dashboard is a Next.js application designed for real-time monitoring of 
 
 ## Step 0: Ensure slurmrestd is fully configured
 
-In the JSP lab, slurmrestd was configured and setup to test jobs by adding the JWT authentication to slurm.conf. However, we are missing a few configuration items to allow the slurmrestd to connect properly to slurmdbd.
+In a previous lab, slurmrestd was configured and setup to communicate with slurmctld by adding the JWT authentication to slurm.conf. However, we are missing a few configuration items to allow the slurmrestd to connect properly to slurmdbd.
 
-Ensure the following lines are present in `/etc/slurm/slurm.conf`:
+Add the following lines to `/etc/slurm/slurmdbd.conf`:
 
 ```bash
 AuthAltTypes=auth/jwt
@@ -61,6 +61,12 @@ Slurm Dashboard requires Node.js version 19.x or higher. First, ensure your syst
 ```bash
 sudo dnf module enable nodejs:22
 sudo dnf install -y npm nginx certbot
+```
+
+selinux will need to be configured to allow NGINX to make network connections:
+
+```bash
+sudo setsebool -P httpd_can_network_connect 1
 ```
 
 ## Step 2: Download the HPC Dashboard with NPX
