@@ -274,6 +274,20 @@ sudo -i
 scontrol delete reservationname=maint
 ```
 
+## Step 12: Star the Project GitHub (Optional) 
+
+If you like the dashboard, please consider starring the project on [GitHub](https://github.com/thediymaker/slurm-node-dashboard)!
+
 ## Additional Resources
 
 - Slurm Dashboard Website: [slurmdash.com](https://www.slurmdash.com/)
+- Slurm Dashboard Github: [github.com/thediymaker/slurm-node-dashboard](https://github.com/thediymaker/slurm-node-dashboard)
+- OpenOnDemand Integration: [slurmdash.com/docs/integrations/open-ondemand](https://www.slurmdash.com/docs/integrations/open-ondemandhttps://www.slurmdash.com/docs/integrations/open-ondemand)
+- Custom Color Themes: [slurmdash.com/docs/customization/card-themes](https://www.slurmdash.com/docs/customization/card-themes)
+- Video Guide: [youtube.com/watch?v=wVEhPN-IqEA](https://www.youtube.com/watch?v=wVEhPN-IqEA&feature=youtu.be)
+- Slurm API Docs:
+    - [REST API QuickStart](https://slurm.schedmd.com/rest_quickstart.html)
+    - [REST API Overview](https://slurm.schedmd.com/rest.html)
+    - [REST API Client Guide](https://slurm.schedmd.com/rest_clients.html)
+    - [REST API Endpoints](https://slurm.schedmd.com/rest_api.html)
+    - [slurmrestd man page](https://slurm.schedmd.com/slurmrestd.html)
